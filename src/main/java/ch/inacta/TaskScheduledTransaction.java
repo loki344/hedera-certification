@@ -45,6 +45,8 @@ public class TaskScheduledTransaction {
             var deserializedScheduleId = readBase64EncodedIdFromFile(scheduleId);
             signTransaction(client, deserializedScheduleId, ACCOUNT1);
 
+            //TODO fetch the transaction and show that it's executed
+
             // Check if the balance is affected
             System.out.printf("Balance of account %s after script: %s hbar%n", ACCOUNT1.getId(),
                     getBalanceOfAccount(ACCOUNT1.getId(), client).toString(HbarUnit.HBAR));
