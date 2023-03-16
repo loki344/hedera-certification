@@ -10,6 +10,8 @@ import com.hedera.hashgraph.sdk.ReceiptStatusException;
 import com.hedera.hashgraph.sdk.ScheduleCreateTransaction;
 import com.hedera.hashgraph.sdk.ScheduleId;
 import com.hedera.hashgraph.sdk.ScheduleSignTransaction;
+import com.hedera.hashgraph.sdk.TransactionId;
+import com.hedera.hashgraph.sdk.TransactionReceipt;
 import com.hedera.hashgraph.sdk.TransferTransaction;
 import org.jetbrains.annotations.NotNull;
 
@@ -38,12 +40,12 @@ public class TaskScheduledTransaction {
                     getBalanceOfAccount(ACCOUNT2.getId(), client).toString(HbarUnit.HBAR));
 
             // Create scheduled transaction, save it to file
-            var scheduleId = createScheduledTransaction(client);
-            saveBase64EncodedIdToFile(scheduleId);
+            var transactionReceipt = createScheduledTransaction(client);
+            saveBase64EncodedTransactionToFile(transactionReceipt);
 
             // Read the file and sign the transaction
-            var deserializedScheduleId = readBase64EncodedIdFromFile(scheduleId);
-            signTransaction(client, deserializedScheduleId, ACCOUNT1);
+            var deserializedTransactionReceipt = readBase64EncodedTransactionReceiptFromFile(transactionReceipt);
+            signTransaction(client, deserializedTransactionReceipt.scheduleId, ACCOUNT1);
 
             //TODO fetch the transaction and show that it's executed
 
@@ -61,23 +63,23 @@ public class TaskScheduledTransaction {
         System.out.printf("Signed scheduleId: %s with account id: %s, Status: %s%n", scheduleId, signer.getId(), receipt.status);
     }
 
-    private static ScheduleId readBase64EncodedIdFromFile(ScheduleId scheduleId) {
+    private static TransactionReceipt readBase64EncodedTransactionReceiptFromFile(TransactionReceipt transactionReceipt) {
 
         String encodedContent = "";
         try {
-            encodedContent = Files.readString(Path.of(getFileName(scheduleId)), StandardCharsets.UTF_8);
+            encodedContent = Files.readString(Path.of(getFileName(transactionReceipt.transactionId)), StandardCharsets.UTF_8);
+            return TransactionReceipt.fromBytes(Base64.getDecoder().decode(encodedContent));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        var decodedContent = new String(Base64.getDecoder().decode(encodedContent));
-        return ScheduleId.fromString(decodedContent);
+        return null;
     }
 
-    private static void saveBase64EncodedIdToFile(ScheduleId scheduleId) {
+    private static void saveBase64EncodedTransactionToFile(TransactionReceipt transactionReceipt) {
 
-        var fileName = getFileName(scheduleId);
+        var fileName = getFileName(transactionReceipt.transactionId);
         try (var writer = new BufferedWriter(new FileWriter(fileName))) {
-            var encodedContent = Base64.getEncoder().encodeToString(scheduleId.toString().getBytes(StandardCharsets.UTF_8));
+            var encodedContent = Base64.getEncoder().encodeToString(transactionReceipt.toBytes());
             writer.write(encodedContent);
         } catch (IOException e) {
             System.out.printf("Writing File failed!");
@@ -87,8 +89,8 @@ public class TaskScheduledTransaction {
     }
 
     @NotNull
-    private static String getFileName(ScheduleId scheduleId) {
-        return "schedule_id_" + scheduleId + ".txt";
+    private static String getFileName(TransactionId transactionId) {
+        return "schedule_id_" + transactionId + ".txt";
     }
 
     private static Hbar getBalanceOfAccount(AccountId id, Client client) throws TimeoutException, PrecheckStatusException {
@@ -96,16 +98,16 @@ public class TaskScheduledTransaction {
         return new AccountBalanceQuery().setAccountId(id).execute(client).hbars;
     }
 
-    private static ScheduleId createScheduledTransaction(Client client) throws TimeoutException, PrecheckStatusException, ReceiptStatusException {
+    private static TransactionReceipt createScheduledTransaction(Client client) throws TimeoutException, PrecheckStatusException, ReceiptStatusException {
 
-        final var transaction = new TransferTransaction().addHbarTransfer(ACCOUNT1.getId(), Hbar.from(10).negated())
-                .addHbarTransfer(ACCOUNT2.getId(), Hbar.from(10));
+        final var transaction = new TransferTransaction().addHbarTransfer(ACCOUNT1.getId(), Hbar.from(5).negated())
+                .addHbarTransfer(ACCOUNT2.getId(), Hbar.from(5));
 
         final var scheduledTransaction = new ScheduleCreateTransaction().setScheduledTransaction(transaction).execute(client);
 
         var receipt = scheduledTransaction.getReceipt(client).validateStatus(true);
         System.out.printf("Scheduled transaction with id: %s created%n", receipt.scheduleId);
-        return Objects.requireNonNull(receipt.scheduleId);
+        return Objects.requireNonNull(receipt);
     }
 
 }
