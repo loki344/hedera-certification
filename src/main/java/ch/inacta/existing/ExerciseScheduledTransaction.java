@@ -1,5 +1,6 @@
-package ch.inacta;
+package ch.inacta.existing;
 
+import ch.inacta.ClientFactory;
 import com.hedera.hashgraph.sdk.AccountBalanceQuery;
 import com.hedera.hashgraph.sdk.AccountId;
 import com.hedera.hashgraph.sdk.Client;
@@ -19,7 +20,7 @@ import static ch.inacta.Config.ACCOUNT1;
 import static ch.inacta.Config.ACCOUNT2;
 import static ch.inacta.Config.MY_ACCOUNT;
 
-public class Slide4 {
+public class ExerciseScheduledTransaction {
 
     public static void main(String[] args) throws TimeoutException, ReceiptStatusException, PrecheckStatusException {
 

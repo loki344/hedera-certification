@@ -1,5 +1,7 @@
-package ch.inacta;
+package ch.inacta.existing;
 
+import ch.inacta.ClientFactory;
+import ch.inacta.Config;
 import com.hedera.hashgraph.sdk.PrecheckStatusException;
 import com.hedera.hashgraph.sdk.ReceiptStatusException;
 import com.hedera.hashgraph.sdk.TopicCreateTransaction;
@@ -10,7 +12,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 import java.util.concurrent.TimeoutException;
 
-public class Slide6 {
+public class ExerciseConsensusService {
 
     public static void main(String[] args) throws TimeoutException, ReceiptStatusException, PrecheckStatusException {
 

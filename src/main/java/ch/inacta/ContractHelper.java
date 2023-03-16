@@ -16,8 +16,6 @@ import com.hedera.hashgraph.sdk.ReceiptStatusException;
 import com.hedera.hashgraph.sdk.Status;
 import com.hedera.hashgraph.sdk.TransactionId;
 import com.hedera.hashgraph.sdk.TransactionRecord;
-import com.hedera.hashgraph.sdk.TransactionRecordQuery;
-import com.hedera.hashgraph.sdk.TransactionResponse;
 
 import java.io.IOException;
 import java.io.InputStream;

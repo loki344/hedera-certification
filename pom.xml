@@ -15,6 +15,12 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>2.0.6</version>
+        </dependency>
+
         <!-- Android, Corda DJVM, Java 7+ -->
         <dependency>
             <groupId>com.hedera.hashgraph</groupId>

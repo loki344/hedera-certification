@@ -1,5 +1,7 @@
-package ch.inacta;
+package ch.inacta.existing;
 
+import ch.inacta.Account;
+import ch.inacta.ClientFactory;
 import com.hedera.hashgraph.sdk.AccountId;
 import com.hedera.hashgraph.sdk.Client;
 import com.hedera.hashgraph.sdk.PrecheckStatusException;
@@ -20,7 +22,7 @@ import static ch.inacta.Config.ACCOUNT2;
 import static ch.inacta.Config.ACCOUNT3;
 import static ch.inacta.Config.MY_ACCOUNT;
 
-public class Slide2 {
+public class ExerciseTokenService {
 
     public static void main(String[] args) throws PrecheckStatusException, TimeoutException, ReceiptStatusException {
 

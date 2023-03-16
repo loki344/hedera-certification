@@ -1,5 +1,7 @@
-package ch.inacta;
+package ch.inacta.existing;
 
+import ch.inacta.Account;
+import ch.inacta.ClientFactory;
 import com.hedera.hashgraph.sdk.AccountCreateTransaction;
 import com.hedera.hashgraph.sdk.AccountId;
 import com.hedera.hashgraph.sdk.Client;
@@ -22,7 +24,7 @@ import static ch.inacta.Config.ACCOUNT1;
 import static ch.inacta.Config.ACCOUNT2;
 import static ch.inacta.Config.ACCOUNT3;
 
-public class Slide5 {
+public class ExerciseMultiSignature {
 
     public static void main(String[] args) throws TimeoutException, ReceiptStatusException, PrecheckStatusException {
 

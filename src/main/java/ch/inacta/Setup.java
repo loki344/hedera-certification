@@ -4,7 +4,7 @@ import com.hedera.hashgraph.sdk.*;
 
 import java.util.concurrent.TimeoutException;
 
-public class Slide1 {
+public class Setup {
 
     // How much each account should be initially funded with.
     public static final Hbar INITIAL_FUNDING = Hbar.from(10);

@@ -1,5 +1,7 @@
-package ch.inacta;
+package ch.inacta.existing;
 
+import ch.inacta.ClientFactory;
+import ch.inacta.ContractHelper;
 import com.hedera.hashgraph.sdk.Client;
 import com.hedera.hashgraph.sdk.ContractCreateFlow;
 import com.hedera.hashgraph.sdk.ContractDeleteTransaction;
@@ -15,7 +17,7 @@ import java.util.concurrent.TimeoutException;
 
 import static ch.inacta.Config.MY_ACCOUNT;
 
-public class Slide3 {
+public class ExerciseSmartContractService {
 
     public static void main(String[] args) throws TimeoutException, IOException, ReceiptStatusException, PrecheckStatusException {
 
