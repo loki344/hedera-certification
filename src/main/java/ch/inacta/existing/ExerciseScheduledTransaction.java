@@ -58,8 +58,8 @@ public class ExerciseScheduledTransaction {
 
     private static ScheduleId createScheduledTransaction(Client client) throws TimeoutException, PrecheckStatusException, ReceiptStatusException {
 
-        final var transaction = new TransferTransaction().addHbarTransfer(ACCOUNT1.getId(), Hbar.fromTinybars(11).negated())
-                .addHbarTransfer(ACCOUNT2.getId(), Hbar.fromTinybars(11));
+        final var transaction = new TransferTransaction().addHbarTransfer(ACCOUNT1.getId(), Hbar.from(10).negated())
+                .addHbarTransfer(ACCOUNT2.getId(), Hbar.from(10));
 
         final var scheduledTransaction = new ScheduleCreateTransaction().setScheduledTransaction(transaction)
                 .setAdminKey(MY_ACCOUNT.getPublicKey()).execute(client);
