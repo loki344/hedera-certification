@@ -51,7 +51,7 @@ public class TaskSmartContractService {
 
         int result = Objects.requireNonNull(response.getRecord(client).validateReceiptStatus(true).contractFunctionResult).getInt32(0);
 
-        System.out.printf("Invoked function1 of contract id %s with arguments 5 and 6 and received result: %s%n", contractId, result);
+        System.out.printf("Invoked function2 of contract id %s with arguments %s and received result: %s%n", contractId, input, result);
         return result;
     }
 
@@ -63,7 +63,7 @@ public class TaskSmartContractService {
 
         int result = Objects.requireNonNull(response.getRecord(client).validateReceiptStatus(true).contractFunctionResult).getInt32(0);
 
-        System.out.printf("Invoked function1 of contract id %s with arguments 5 and 6 and received result: %s%n", contractId, result);
+        System.out.printf("Invoked function1 of contract id %s with arguments 4 and 3 and received result: %s%n", contractId, result);
         return result;
     }
 
