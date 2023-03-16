@@ -9,6 +9,7 @@ import com.hedera.hashgraph.sdk.PrecheckStatusException;
 import com.hedera.hashgraph.sdk.ReceiptStatusException;
 import com.hedera.hashgraph.sdk.ScheduleCreateTransaction;
 import com.hedera.hashgraph.sdk.ScheduleId;
+import com.hedera.hashgraph.sdk.ScheduleInfoQuery;
 import com.hedera.hashgraph.sdk.ScheduleSignTransaction;
 import com.hedera.hashgraph.sdk.TransactionId;
 import com.hedera.hashgraph.sdk.TransactionReceipt;
@@ -47,7 +48,7 @@ public class TaskScheduledTransaction {
             var deserializedTransactionReceipt = readBase64EncodedTransactionReceiptFromFile(transactionReceipt);
             signTransaction(client, deserializedTransactionReceipt.scheduleId, ACCOUNT1);
 
-            //TODO fetch the transaction and show that it's executed
+            logScheduleInfo(client, deserializedTransactionReceipt.scheduleId);
 
             // Check if the balance is affected
             System.out.printf("Balance of account %s after script: %s hbar%n", ACCOUNT1.getId(),
@@ -56,6 +57,11 @@ public class TaskScheduledTransaction {
                     getBalanceOfAccount(ACCOUNT2.getId(), client).toString(HbarUnit.HBAR));
 
         }
+    }
+
+    private static void logScheduleInfo(Client client, ScheduleId scheduleId) throws PrecheckStatusException, TimeoutException {
+        var receipt = new ScheduleInfoQuery().setScheduleId(scheduleId).execute(client);
+        System.out.printf("Transaction details: %s%n", receipt);
     }
 
     private static void signTransaction(Client client, ScheduleId scheduleId, Account signer) throws PrecheckStatusException, TimeoutException, ReceiptStatusException {
@@ -100,8 +106,8 @@ public class TaskScheduledTransaction {
 
     private static TransactionReceipt createScheduledTransaction(Client client) throws TimeoutException, PrecheckStatusException, ReceiptStatusException {
 
-        final var transaction = new TransferTransaction().addHbarTransfer(ACCOUNT1.getId(), Hbar.from(5).negated())
-                .addHbarTransfer(ACCOUNT2.getId(), Hbar.from(5));
+        final var transaction = new TransferTransaction().addHbarTransfer(ACCOUNT1.getId(), Hbar.from(10).negated())
+                .addHbarTransfer(ACCOUNT2.getId(), Hbar.from(10));
 
         final var scheduledTransaction = new ScheduleCreateTransaction().setScheduledTransaction(transaction).execute(client);
 
