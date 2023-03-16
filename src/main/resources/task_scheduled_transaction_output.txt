@@ -1,0 +1,10 @@
+Balance of account 0.0.3831571 before script: 50 hbar
+Balance of account 0.0.3831572 before script: 50 hbar
+Scheduled transaction with id: 0.0.3831581 created
+Created schedule_id_0.0.3561041@1678980428.184348403.txt
+Signed scheduleId: 0.0.3831581 with account id: 0.0.3831571, Status: SUCCESS
+Transaction details: ScheduleInfo{scheduleId=0.0.3831581, scheduledTransactionId=0.0.3561041@1678980428.184348403?scheduled, creatorAccountId=0.0.3561041, payerAccountId=0.0.3561041, signatories=KeyList{threshold=null, keys=[302a300506032b6570032100bec316849f0007ac2834d4beb0ab12ac93e8e14ca6b7d5d026f8291af14534a8]}, adminKey=null, expirationTime=2023-03-16T15:57:19Z, memo=, executedAt=2023-03-16T15:27:20.643653007Z, deletedAt=null, ledgerId=testnet, waitForExpiry=false}
+Balance of account 0.0.3831571 after script: 40 hbar
+Balance of account 0.0.3831572 after script: 60 hbar
+
+Process finished with exit code 0

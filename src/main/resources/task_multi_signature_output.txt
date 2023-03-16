@@ -1,0 +1,8 @@
+2-of-3 multi-sig account ID: 0.0.3831585
+Signing transaction with account id: 0.0.3831571
+Transaction failed with exception com.hedera.hashgraph.sdk.ReceiptStatusException: receipt for transaction 0.0.3561041@1678980479.725856936 raised status INVALID_SIGNATURE
+Signing transaction with account id: 0.0.3831571
+Signing transaction with account id: 0.0.3831572
+Transaction info: TransactionRecord{receipt=TransactionReceipt{transactionId=0.0.3561041@1678980482.746227739, status=SUCCESS, exchangeRate=ExchangeRate{hbars=30000, cents=181232, expirationTime=2023-03-16T16:00:00Z, exchangeRateInCents=6.041066666666667}, accountId=null, fileId=null, contractId=null, topicId=null, tokenId=null, topicSequenceNumber=null, topicRunningHash=null, totalSupply=0, scheduleId=null, scheduledTransactionId=null, serials=[], duplicates=[], children=[]}, transactionHash=3dc1acb2c70152c08c1f1237d7e3c95ce190908fa9ed6d5ba1f8f5b2469ba36f88d97591b0b7dfa4fbe84a6736301e84, consensusTimestamp=2023-03-16T15:28:13.895035462Z, transactionId=0.0.3561041@1678980482.746227739, transactionMemo=, transactionFee=0.00375873 ℏ, contractFunctionResult=null, transfers=[Transfer{accountId=0.0.6, amount=7166 tℏ}, Transfer{accountId=0.0.98, amount=0.00368707 ℏ}, Transfer{accountId=0.0.3561041, amount=-0.00375873 ℏ}, Transfer{accountId=0.0.3831574, amount=10 ℏ}, Transfer{accountId=0.0.3831585, amount=-10 ℏ}], tokenTransfers={}, tokenNftTransfers={}, scheduleRef=null, assessedCustomFees=[], automaticTokenAssociations=[], aliasKey=null, children=[], duplicates=[], parentConsensusTimestamp=null, ethereumHash=, paidStakingRewards=[], prngBytes=null, prngNumber=null, evmAddress=}
+
+Process finished with exit code 0

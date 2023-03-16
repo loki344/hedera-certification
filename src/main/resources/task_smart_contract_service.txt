@@ -1,0 +1,6 @@
+Created contract with id: 0.0.3831580. Status: SUCCESS
+Invoked function1 of contract id 0.0.3831580 with arguments 4 and 3 and received result: 12
+Invoked function2 of contract id 0.0.3831580 with arguments 12 and received result: 14
+Deleted contract id: 0.0.3831580
+
+Process finished with exit code 0

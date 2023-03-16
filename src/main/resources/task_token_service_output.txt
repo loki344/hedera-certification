@@ -1,0 +1,7 @@
+Created token with id 0.0.3831578
+The mint transaction consensus status is SUCCESS
+Associated Account 0.0.3831573 with token 0.0.3831578. Status: SUCCESS
+NFT transfer from account1 to account3: SUCCESS
+Transaction details: TransactionResponse{nodeId=0.0.3, transactionHash=2f34f793e0e987178b2d7309dfe10931a992100f625e9ea2fafba52e64a635b653e1ad5ecab5e1fbd7487d180ff79970, transactionId=0.0.3561041@1678980374.800268184}
+
+Process finished with exit code 0
