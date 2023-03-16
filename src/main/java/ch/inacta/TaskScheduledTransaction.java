@@ -98,8 +98,8 @@ public class TaskScheduledTransaction {
 
     private static ScheduleId createScheduledTransaction(Client client) throws TimeoutException, PrecheckStatusException, ReceiptStatusException {
 
-        final var transaction = new TransferTransaction().addHbarTransfer(ACCOUNT1.getId(), Hbar.fromTinybars(27).negated())
-                .addHbarTransfer(ACCOUNT2.getId(), Hbar.fromTinybars(27));
+        final var transaction = new TransferTransaction().addHbarTransfer(ACCOUNT1.getId(), Hbar.from(10).negated())
+                .addHbarTransfer(ACCOUNT2.getId(), Hbar.from(10));
 
         final var scheduledTransaction = new ScheduleCreateTransaction().setScheduledTransaction(transaction).execute(client);
 
