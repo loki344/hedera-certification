@@ -7,7 +7,7 @@ import java.util.concurrent.TimeoutException;
 public class Setup {
 
     // How much each account should be initially funded with.
-    public static final Hbar INITIAL_FUNDING = Hbar.from(10);
+    public static final Hbar INITIAL_FUNDING = Hbar.from(1_000);
 
     public static void main(String[] args) throws PrecheckStatusException, TimeoutException, ReceiptStatusException {
 
